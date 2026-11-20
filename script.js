@@ -52,6 +52,21 @@ if (!reduce && 'IntersectionObserver' in window) {
 }
 if (reduce) heroVideo?.pause();
 
+// building: each step that reaches the middle of the screen draws its stage, and every stage below it
+const art = document.querySelector('.build-art'), bSteps = [...document.querySelectorAll('.build-steps li')];
+if (art) {
+  const reach = k => {
+    bSteps.forEach((li, j) => li.classList.toggle('on', j <= k));
+    art.querySelectorAll('.bg').forEach(g => g.classList.toggle('on', +g.dataset.stage <= k));
+    art.classList.toggle('done', k === bSteps.length - 1);
+  };
+  if (reduce || !('IntersectionObserver' in window)) reach(bSteps.length - 1);
+  else {
+    const bo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) reach(bSteps.indexOf(e.target)); }), { rootMargin: '-45% 0px -45% 0px' });
+    bSteps.forEach(li => bo.observe(li));
+  }
+}
+
 // work reel: the list picks which clip fills the screen
 const reelFigs = [...document.querySelectorAll('.reel .clip')], reelBtns = [...document.querySelectorAll('.reel-btn')];
 const pick = n => {
@@ -64,24 +79,11 @@ const pick = n => {
 };
 reelBtns.forEach((b, k) => ['click', 'mouseenter', 'focus'].forEach(ev => b.addEventListener(ev, () => pick(k))));
 
-// Meta management toggle updates the Pubs prices
-const meta = document.getElementById('metaToggle');
-if (meta) meta.addEventListener('change', () => {
-  const key = meta.checked ? 'meta' : 'base';
-  document.getElementById('pubs').classList.toggle('meta-on', meta.checked);
-  document.querySelectorAll('#pubs [data-base]').forEach(el => {
-    if (el.classList.contains('amount') && !reduce) {
-      el.classList.add('swap');
-      setTimeout(() => { el.textContent = el.dataset[key]; el.classList.remove('swap'); }, 180);
-    } else el.textContent = el.dataset[key];
-  });
-});
-
 // a plan button carries its choice into the contact form
 document.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => {
   const f = document.getElementById('leadForm'); if (!f || !f.forfait) return;
   f.querySelector(`input[name=forfait][value=${b.dataset.pick}]`).checked = true;
-  f.plan.value = b.dataset.plan + (b.dataset.pick === 'pubs' && meta?.checked ? ' avec gestion Meta' : '');
+  f.plan.value = b.dataset.plan;
 }));
 
 // three-step contact form

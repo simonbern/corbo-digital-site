@@ -88,7 +88,7 @@ section{padding:var(--gap) var(--pad)}
 /* hero: the footage is the page */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:140px var(--pad) clamp(48px,7vw,96px);overflow:hidden;background:var(--ink);--focus:#fff}
 .hero-video{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform}
-.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,17,28,.5) 0%,rgba(11,17,28,0) 28%,rgba(11,17,28,.3) 55%,rgba(11,17,28,.9) 100%)}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,17,28,.4) 0%,rgba(11,17,28,0) 24%,rgba(11,17,28,.12) 55%,rgba(11,17,28,.85) 100%)}
 .hero-inner{position:relative;max-width:1240px;width:100%;margin:0 auto}
 .hero-title{font-size:clamp(36px,8.4vw,128px);line-height:.92}
 .hero-title span{display:block;animation:rise 1.1s var(--ease) both}
@@ -113,15 +113,19 @@ section{padding:var(--gap) var(--pad)}
   @keyframes settle{from{transform:scale(1.14)}to{transform:scale(1)}}
 }
 
-/* two ways: two doors, footage on top, the price range and one button each */
+/* two ways: two doors, footage on top, the same four facts in the same order, one button each */
 .ways-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);margin-top:var(--s7)}
 .way{display:flex;flex-direction:column;align-items:flex-start}
 .way-media{width:100%;aspect-ratio:3/2;overflow:hidden;border-radius:6px;background:var(--ink)}
 .way h3{margin-top:var(--s5);font-size:var(--f28);font-weight:800;font-family:var(--display);text-transform:uppercase;line-height:1.05}
-.way-desc{margin-top:var(--s2);color:var(--mute);max-width:46ch}
-.way-price{margin-top:var(--s4);color:var(--mute)}
-.way-price strong{display:block;font:800 var(--f28)/1.15 var(--font);font-family:var(--display);color:var(--ink)}
-.way .btn{margin-top:var(--s5)}
+.way-sub{margin-top:var(--s2);font-size:var(--f21);line-height:1.3;font-weight:600}
+.way-facts{display:grid;gap:var(--s4);margin-top:var(--s5);max-width:52ch}
+.way-facts dt{font-weight:700;font-size:var(--f15)}
+.way-facts dd{color:var(--mute);font-size:var(--f15)}
+.way .btn{margin-top:auto}
+.way-facts{margin-bottom:var(--s6)}
+.ways-help{margin-top:var(--s7);text-align:center;color:var(--mute)}
+.ways-help a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px}
 
 /* offers: name, price as the hero, commitment, a button for that plan, then what you get */
 .plans{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin-top:var(--s7)}
@@ -144,8 +148,6 @@ section{padding:var(--gap) var(--pad)}
 .plan-dark .rhythm,.plan-dark .per,.plan-dark .tax,.plan-dark .commit,.plan-dark .incl li{color:var(--d-2)}
 .plan-dark .incl li strong,#pubs .plan-dark .incl li{color:#fff}
 .plan-dark .incl li::before{background:#fff}
-.meta-line{display:none}
-.meta-on .meta-line{display:block}
 
 .gear,.meta-explain{display:grid;grid-template-columns:var(--col);gap:var(--s3) var(--s8);margin-top:var(--s7)}
 .gear-title{font-weight:700;font-family:var(--display);font-size:var(--f21);line-height:1.2}
@@ -167,15 +169,7 @@ tr.total th,tr.total td{font-weight:700;color:var(--ink)}
 td:last-child{color:var(--ink);font-weight:500}
 .terms{margin-top:var(--s4);font-size:var(--f15);color:var(--mute)}
 
-/* pubs: the Meta option is a switch that changes the prices in the cards */
 .pubs-head{display:grid;grid-template-columns:1fr auto;gap:var(--s6) var(--s7);align-items:end}
-.switch{display:inline-flex;align-items:center;gap:var(--s4);cursor:pointer;font-weight:500;font-size:var(--f15);background:#fff;padding:var(--s4) var(--s5);border-radius:6px}
-.switch input{position:absolute;opacity:0}
-.switch-ui{flex:none;width:44px;height:26px;border-radius:4px;background:#bdb8ac;position:relative;transition:background-color .2s}
-.switch-ui::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:2px;background:#fff;box-shadow:0 1px 2px rgba(11,17,28,.3);transition:transform .2s var(--ease)}
-.switch input:checked + .switch-ui{background:var(--navy)}
-.switch input:checked + .switch-ui::after{transform:translateX(18px)}
-.switch input:focus-visible + .switch-ui{outline:3px solid var(--navy);outline-offset:3px}
 
 /* work: a row of vertical reels, then one large screen with the list of client projects */
 .reels{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--s3);margin-top:var(--s7)}
@@ -196,6 +190,22 @@ td:last-child{color:var(--ink);font-weight:500}
 .reel-btn strong{display:block;font-weight:700;font-family:var(--display);font-size:var(--f21);line-height:1.2}
 .reel-btn span{display:block;margin-top:var(--s1);font-size:var(--f15);color:var(--mute)}
 .reel-btn:hover,.reel-btn.is-active{background:var(--ink-2)}
+
+/* who films: the photo on one side, the person and three short promises on the other */
+.who-wrap{display:grid;grid-template-columns:minmax(280px,440px) 1fr;gap:clamp(40px,7vw,112px);align-items:center}
+.who-photo{aspect-ratio:2/3;overflow:hidden;border-radius:6px;background:var(--ink)}
+.who-photo img{width:100%;height:100%;object-fit:cover}
+.who-points{display:grid;gap:var(--s4);margin-top:var(--s6)}
+.who-points li{display:grid;grid-template-columns:24px 1fr;gap:var(--s3);align-items:start;color:var(--mute)}
+.who-points svg{width:24px;height:24px;color:var(--navy);margin-top:1px}
+.who-points strong{color:var(--ink);font-weight:600}
+.who-end{margin-top:var(--s6);font-weight:600;max-width:52ch}
+.who-sec .btn{margin-top:var(--s5)}
+@media (max-width:900px){
+  .who-wrap{grid-template-columns:1fr}
+  .who-photo{aspect-ratio:4/3}
+  .who-photo img{object-position:50% 22%}
+}
 
 /* process: the photo on one side, the order told by reading down */
 .process-wrap{display:grid;grid-template-columns:minmax(280px,440px) 1fr;gap:clamp(40px,7vw,112px);align-items:center}
@@ -266,37 +276,47 @@ td:last-child{color:var(--ink);font-weight:500}
 .foot nav{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s6);color:#e3e7ee;margin-left:auto}
 .foot nav a:hover{color:#fff}
 
-/* funnel: three verbs, each smaller, the shape comes from the words */
-.fwords{display:grid;gap:var(--s7);margin-top:var(--s9)}
-.fwords li{display:grid;grid-template-columns:minmax(0,1.15fr) 1fr;gap:var(--s8);align-items:center}
-.fw{justify-self:center;font-weight:800;font-family:var(--display);text-transform:uppercase;line-height:.9;letter-spacing:-.02em}
-.fwords li:nth-child(1) .fw{font-size:clamp(44px,7.4vw,112px);color:#c2cad6}
-.fwords li:nth-child(2) .fw{font-size:clamp(36px,5.6vw,84px);color:#dfe4ec}
-.fwords li:nth-child(3) .fw{font-size:clamp(28px,4vw,60px);color:#fff}
-.fwords h3{font-size:var(--f21)}
-.fwords p{margin-top:var(--s2);color:var(--mute);max-width:44ch}
+/* build: a line drawing that goes up, one stage per step, while the steps scroll past */
+.build{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(40px,7vw,112px);margin-top:var(--s8)}
+.build-art{position:sticky;top:calc(50vh - 190px);align-self:start;color:#fff}
+.build-art svg{display:block;width:100%;max-width:440px;margin-inline:auto}
+.build-art .win rect,.build-art .win path{stroke-width:1.5}
+.build-steps li{min-height:52vh;display:flex;flex-direction:column;justify-content:center}
+.fw{font-weight:800;font-family:var(--display);text-transform:uppercase;line-height:.9;letter-spacing:-.02em;font-size:clamp(44px,6vw,92px)}
+.build-steps li:nth-child(1) .fw{color:#c2cad6}
+.build-steps li:nth-child(2) .fw{color:#dfe4ec}
+.build-steps li:nth-child(3) .fw{color:#fff}
+.build-steps h3{margin-top:var(--s5);font-size:var(--f28)}
+.build-steps .fstage{margin-top:var(--s1);color:#fff;font-weight:600}
+.build-steps p{margin-top:var(--s3);color:var(--mute);max-width:44ch}
+/* with script: each stage draws in when its step reaches the middle of the screen; the crane leaves at delivery */
+.js .build-art [pathLength]{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s var(--ease)}
+.js .build-art .bg.on [pathLength]{stroke-dashoffset:0}
+.js .build-art .bg[data-stage="1"].on .crane path{transition-delay:.5s}
+.build-art .crane{transition:opacity .8s}
+.build-art .bg[data-stage="1"] > path{transition:opacity .8s}
+.build-art.done .crane{opacity:0}
+.build-art.done .bg[data-stage="1"] > path{opacity:.18}
+.js .build-steps li{opacity:.3;transition:opacity .6s}
+.js .build-steps li.on{opacity:1}
 @media (max-width:900px){
   .reels > *{flex-basis:58%}
-  .fwords{gap:var(--s6);margin-top:var(--s7)}
-  .fwords li{grid-template-columns:1fr;gap:var(--s3)}
-  .fw{justify-self:start}
+  .build{grid-template-columns:1fr;gap:0;margin-top:var(--s6)}
+  .build-art{top:64px;z-index:2;background:var(--ink);padding:var(--s3) 0}
+  .build-art svg{max-width:150px}
+  .build-steps li{min-height:auto;padding:var(--s7) 0}
 }
 
-/* one whole section reveals when it arrives; the funnel then fills from the top, in order */
+/* one whole section reveals when it arrives */
 .js .reveal > .wrap{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
 .js .reveal.in > .wrap{opacity:1;transform:none}
-.js .reveal .fwords li{opacity:0;transform:translateY(-20px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.js .reveal.in .fwords li{opacity:1;transform:none;transition-delay:.3s}
-.js .reveal.in .fwords li:nth-child(2){transition-delay:.55s}
-.js .reveal.in .fwords li:nth-child(3){transition-delay:.8s}
 /* tablet */
 @media (max-width:1100px){
   .plan{padding:var(--s6)}
   .faq .wrap,.contact-wrap{grid-template-columns:1fr}
   .faq .sec-title{position:static}
   .pubs-head{grid-template-columns:1fr}
-  .switch{justify-self:start}
-  }
+    }
 @media (max-width:900px){
   .nav{position:fixed;inset:0;flex-direction:column;justify-content:center;align-items:flex-start;gap:var(--s5);padding:0 var(--pad);background:var(--ink);font-weight:800;font-size:var(--f28);line-height:1;font-family:var(--display);text-transform:uppercase;opacity:0;visibility:hidden;transition:opacity .3s,visibility 0s .3s}
   .nav a{color:#fff}
