@@ -134,3 +134,10 @@ if (form) {
     }
   });
 }
+
+// the logo always brings the page back to the very top (the header is fixed, so #top alone does nothing)
+document.querySelector('.brand')?.addEventListener('click', e => {
+  e.preventDefault();
+  scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  history.replaceState(null, '', location.pathname + location.search);
+});
