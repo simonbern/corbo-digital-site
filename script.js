@@ -72,6 +72,13 @@ const pick = n => {
 };
 reelBtns.forEach((b, k) => ['click', 'mouseenter', 'focus'].forEach(ev => b.addEventListener(ev, () => pick(k))));
 
+// reviews: the arrows move the row by one card
+const quotes = document.querySelector('.quotes');
+document.querySelectorAll('.qnav').forEach(b => b.addEventListener('click', () => {
+  const card = quotes.querySelector('.quote');
+  quotes.scrollBy({ left: +b.dataset.dir * (card.offsetWidth + 16), behavior: reduce ? 'auto' : 'smooth' });
+}));
+
 // every "book a call" link opens the form over the page; a plan button arrives with its plan chosen
 const modal = document.getElementById('leadModal');
 let opener = null;
