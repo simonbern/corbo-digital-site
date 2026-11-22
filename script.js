@@ -2,9 +2,10 @@
 document.documentElement.classList.add('js');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Both still to be supplied. Until FORM_ENDPOINT is set the form says it could not send and gives the phone and email.
-const FORM_ENDPOINT = '';   // the webhook that receives the leads
-const PIXEL_ID = '';        // the Meta pixel id; empty means no pixel loads
+// If FORM_ENDPOINT is emptied the form says it could not send and gives the phone and email.
+// The webhook is public by nature (it sits in page code); the honeypot field filters basic bots.
+const FORM_ENDPOINT = 'https://services.leadconnectorhq.com/hooks/4cBAkpl0rDDzH76hT51A/webhook-trigger/ZDehhcxhbNSGAPFY4j6c';   // LeadConnector webhook that receives the leads
+const PIXEL_ID = '1697935301848137';   // Meta pixel; empty means no pixel loads
 
 // Meta pixel: PageView on every load, Lead after a request really went through
 if (PIXEL_ID) {
