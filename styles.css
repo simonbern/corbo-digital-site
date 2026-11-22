@@ -88,7 +88,7 @@ section{padding:var(--gap) var(--pad)}
 /* hero: the footage is the page */
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:140px var(--pad) clamp(48px,7vw,96px);overflow:hidden;background:var(--ink);--focus:#fff}
 .hero-video{position:absolute;inset:-6% 0;width:100%;height:112%;object-fit:cover;will-change:transform}
-.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,17,28,.4) 0%,rgba(11,17,28,0) 24%,rgba(11,17,28,.12) 55%,rgba(11,17,28,.85) 100%)}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,17,28,.5),rgba(11,17,28,0) 65%),linear-gradient(180deg,rgba(11,17,28,.4) 0%,rgba(11,17,28,.08) 24%,rgba(11,17,28,.3) 55%,rgba(11,17,28,.88) 100%)}
 .hero-inner{position:relative;max-width:1240px;width:100%;margin:0 auto}
 .hero-title{font-size:clamp(36px,8.4vw,128px);line-height:.92}
 .hero-title span{display:block;animation:rise 1.1s var(--ease) both}
