@@ -2,8 +2,15 @@
 document.documentElement.classList.add('js');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ponytail: no backend yet. Set this to the real lead endpoint (the live site's form handler) before launch.
-const FORM_ENDPOINT = '';
+// Both still to be supplied. Until FORM_ENDPOINT is set the form says it could not send and gives the phone and email.
+const FORM_ENDPOINT = '';   // the webhook that receives the leads
+const PIXEL_ID = '';        // the Meta pixel id; empty means no pixel loads
+
+// Meta pixel: PageView on every load, Lead after a request really went through
+if (PIXEL_ID) {
+  !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', PIXEL_ID); fbq('track', 'PageView');
+}
 
 // header turns solid once the page scrolls
 const header = document.getElementById('top');
@@ -52,21 +59,6 @@ if (!reduce && 'IntersectionObserver' in window) {
 }
 if (reduce) heroVideo?.pause();
 
-// building: each step that reaches the middle of the screen draws its stage, and every stage below it
-const art = document.querySelector('.build-art'), bSteps = [...document.querySelectorAll('.build-steps li')];
-if (art) {
-  const reach = k => {
-    bSteps.forEach((li, j) => li.classList.toggle('on', j <= k));
-    art.querySelectorAll('.bg').forEach(g => g.classList.toggle('on', +g.dataset.stage <= k));
-    art.classList.toggle('done', k === bSteps.length - 1);
-  };
-  if (reduce || !('IntersectionObserver' in window)) reach(bSteps.length - 1);
-  else {
-    const bo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) reach(bSteps.indexOf(e.target)); }), { rootMargin: '-45% 0px -45% 0px' });
-    bSteps.forEach(li => bo.observe(li));
-  }
-}
-
 // work reel: the list picks which clip fills the screen
 const reelFigs = [...document.querySelectorAll('.reel .clip')], reelBtns = [...document.querySelectorAll('.reel-btn')];
 const pick = n => {
@@ -79,12 +71,24 @@ const pick = n => {
 };
 reelBtns.forEach((b, k) => ['click', 'mouseenter', 'focus'].forEach(ev => b.addEventListener(ev, () => pick(k))));
 
-// a plan button carries its choice into the contact form
-document.querySelectorAll('[data-pick]').forEach(b => b.addEventListener('click', () => {
-  const f = document.getElementById('leadForm'); if (!f || !f.forfait) return;
-  f.querySelector(`input[name=forfait][value=${b.dataset.pick}]`).checked = true;
-  f.plan.value = b.dataset.plan;
-}));
+// every "book a call" link opens the form over the page; a plan button arrives with its plan chosen
+const modal = document.getElementById('leadModal');
+let opener = null;
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href="#contact"]');
+  if (!a || !modal) return;
+  e.preventDefault();
+  opener = a;
+  const f = modal.querySelector('form');
+  if (a.dataset.pick && f?.forfait) {
+    f.querySelector(`input[name=forfait][value=${a.dataset.pick}]`).checked = true;
+    f.plan.value = a.dataset.plan;
+  }
+  modal.showModal();
+  (modal.querySelector('.step.is-active input:checked') || modal.querySelector('.step.is-active input:not([type=hidden]),.step.is-active textarea,.done:not([hidden]) h3') || modal.querySelector('[data-close]')).focus({ preventScroll: true });
+});
+modal?.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) modal.close(); });
+modal?.addEventListener('close', () => { opener?.focus({ preventScroll: true }); opener = null; });
 
 // three-step contact form
 const form = document.getElementById('leadForm');
@@ -122,14 +126,14 @@ if (form) {
     if (data.site_web) return; // honeypot
     const btn = form.querySelector('[type=submit]'); btn.disabled = true; btn.textContent = 'Envoi…';
     try {
-      if (FORM_ENDPOINT) {
-        const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 10000);
-        const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), signal: ctrl.signal });
-        clearTimeout(t);
-        if (!r.ok) throw new Error(r.status);
-      }
+      if (!FORM_ENDPOINT) throw new Error('no endpoint');
+      const ctrl = new AbortController(); const t = setTimeout(() => ctrl.abort(), 10000);
+      const r = await fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data), signal: ctrl.signal });
+      clearTimeout(t);
+      if (!r.ok) throw new Error(r.status);
       steps.forEach(s => s.remove()); form.querySelector('.progress').remove();
       form.querySelector('.done').hidden = false;
+      window.fbq?.('track', 'Lead', { content_name: data.plan || data.forfait });
     } catch {
       steps[i].querySelector('.err').textContent = 'La demande n\'a pas pu être envoyée. Écrivez-nous à info@corbodigital.com ou appelez au 438 529-9384.';
       btn.disabled = false; btn.textContent = 'Envoyer ma demande';

@@ -9,8 +9,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500..800&family=Urbanist:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=25">
+<link rel="stylesheet" href="styles.css?v=26">
 <link rel="icon" href="assets/favicon.png">
+<link rel="canonical" href="https://corbodigital.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:url" content="https://corbodigital.com/">
+<meta property="og:title" content="Corbo Digital | Du chantier à l'écran">
+<meta property="og:description" content="On filme votre entreprise sur le terrain et on en fait du contenu pour vos réseaux et vos campagnes publicitaires. Montréal.">
+<meta property="og:image" content="https://corbodigital.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"LocalBusiness","name":"Corbo Digital","url":"https://corbodigital.com/","image":"https://corbodigital.com/assets/og.jpg","telephone":"+1-438-529-9384","email":"info@corbodigital.com","address":{"@type":"PostalAddress","addressLocality":"Montréal","addressRegion":"QC","addressCountry":"CA"},"sameAs":["https://www.instagram.com/corbodigital/"]}
+</script>
 </head>
 <body>
 
@@ -31,16 +44,17 @@
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-1080.jpg?v=25" aria-hidden="true">
-    <source src="assets/hero-mobile-broll.mp4?v=25" media="(max-width: 700px)" type="video/mp4">
-    <source src="assets/hero-1080.mp4?v=25" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-1080.jpg?v=26" aria-hidden="true">
+    <source src="assets/hero-mobile-broll.mp4?v=26" media="(max-width: 700px)" type="video/mp4">
+    <source src="assets/hero-1080.mp4?v=26" type="video/mp4">
   </video>
   <div class="hero-veil"></div>
   <div class="hero-inner">
     <h1 class="hero-title"><span>Du chantier</span> <span>à l'écran.</span></h1>
     <p class="hero-lead">On filme votre entreprise sur le terrain, avec vos vraies équipes et vos vraies machines, et on en fait du contenu pour vos réseaux et vos campagnes publicitaires.</p>
+    <p class="hero-tag">Pas une agence de marketing. Une équipe de production qui vient du chantier.</p>
     <div class="hero-cta">
-      <a class="btn btn-light" href="#offres">Voir les forfaits</a>
+      <a class="btn btn-light" href="#contact">Réserver un appel</a>
       <a class="btn btn-dark" href="#realisations">Nos réalisations</a>
     </div>
   </div>
@@ -70,7 +84,8 @@
 
     <div class="ways-grid" data-carousel>
       <a class="way" href="#presence">
-        <div class="way-media"><video class="zoom" muted loop playsinline preload="none" poster="assets/reels/presence.jpg" data-src="assets/reels/presence.mp4"></video></div>
+        <div class="way-media"><video muted loop playsinline preload="none" poster="assets/reels/presence.jpg" data-src="assets/reels/presence.mp4"></video></div>
+        <div class="way-body">
         <h3>Forfaits Présence</h3>
         <p class="way-sub">Votre image de marque, gérée au complet</p>
         <dl class="way-facts">
@@ -80,9 +95,11 @@
           <div><dt>Deux forfaits</dt><dd>Fondation (2 publications par semaine) et Impact (6 publications par semaine).</dd></div>
         </dl>
         <span class="btn">Voir Fondation et Impact</span>
+        </div>
       </a>
       <a class="way" href="#pubs">
-        <div class="way-media way-face"><video class="zoom" muted loop playsinline preload="none" poster="assets/reels/pubs-face.jpg" data-src="assets/reels/pubs-face.mp4"></video></div>
+        <div class="way-media way-face"><video muted loop playsinline preload="none" poster="assets/reels/pubs-face.jpg" data-src="assets/reels/pubs-face.mp4"></video></div>
+        <div class="way-body">
         <h3>Forfaits Pubs</h3>
         <p class="way-sub">Du matériel frais pour vos campagnes, chaque mois</p>
         <dl class="way-facts">
@@ -92,6 +109,7 @@
           <div><dt>Deux forfaits</dt><dd>Pubs 10 et Pubs 20.</dd></div>
         </dl>
         <span class="btn">Voir Pubs 10 et Pubs 20</span>
+        </div>
       </a>
     </div>
     <p class="ways-help">Pas certain de ce qui vous convient? On vous le dit franchement pendant <a href="#contact">un appel de 15 minutes</a>.</p>
@@ -121,7 +139,7 @@
         <h3>Impact</h3>
         <p class="rhythm">6 publications par semaine : 3 vidéos et 3 photos</p>
         <p class="commit">2 mois minimum, facturation mensuelle</p>
-        <a class="btn btn-light" href="#contact" data-pick="presence" data-plan="Impact">Parler de Impact</a>
+        <a class="btn btn-light" href="#contact" data-pick="presence" data-plan="Impact">Parler d'Impact</a>
         <ul class="incl">
           <li><strong>Tout le forfait Fondation</strong>Production, gestion de vos réseaux et cédule de publication</li>
           <li><strong>1 vidéo cinématique par semaine</strong>Haute qualité, en plus des 2 vidéos de Fondation</li>
@@ -166,40 +184,6 @@
       </div>
       <p class="terms">Contrat initial de deux mois minimum. Facturation mensuelle.</p>
     </details>
-  </div>
-</section>
-
-<!-- BUILD: the three kinds of content, told as a building going up -->
-<section class="build-sec b-ink">
-  <div class="wrap">
-    <h2 class="sec-title">Chaque publication a une job</h2>
-    <p class="sec-lead">On bâtit votre présence comme un chantier : dans l'ordre, une étape à la fois.</p>
-    <div class="build">
-      <div class="build-art" aria-hidden="true">
-        <svg viewBox="0 0 320 380" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <g class="bg" data-stage="0">
-            <path d="M8 340H312" pathLength="1"/>
-            <path d="M62 340V368H258V340" pathLength="1"/>
-
-          </g>
-          <g class="bg" data-stage="1">
-            <path d="M70 340V140M130 340V140M190 340V140M250 340V140" pathLength="1"/>
-            <path d="M70 290H250M70 240H250M70 190H250M70 140H250" pathLength="1"/>
-            <g class="crane"><path d="M288 340V40M288 40H150M288 40H312M288 22L150 40M288 22L312 40M288 22V40M200 40V96M192 96H208V106H192Z" pathLength="1"/></g>
-          </g>
-          <g class="bg" data-stage="2">
-            <path d="M64 140H256V134H64Z" pathLength="1"/>
-            <path d="M70 140V340H250V140" pathLength="1"/>
-            <g class="win"><path d="M88 152h24v26h-24ZM148 152h24v26h-24ZM208 152h24v26h-24ZM88 202h24v26h-24ZM148 202h24v26h-24ZM208 202h24v26h-24ZM88 252h24v26h-24ZM148 252h24v26h-24ZM208 252h24v26h-24ZM88 302h24v26h-24ZM208 302h24v26h-24Z" pathLength="1"/><path d="M146 340V304H174V340" pathLength="1"/></g>
-          </g>
-        </svg>
-      </div>
-      <ol class="build-steps" aria-label="Les trois étapes du contenu">
-        <li data-stage="0"><span class="fw">Creuser</span><h3>Faire arrêter le pouce</h3><p class="fstage">Attirer le grand public</p><p>Vos équipes en action, votre machinerie, un drone qui passe au ras d'une pelle. Le monde qui ne vous connaît pas encore s'arrête pour regarder.</p></li>
-        <li data-stage="1"><span class="fw">Monter</span><h3>Montrer comment vous bâtissez</h3><p class="fstage">Informer votre public cible</p><p>Votre flotte, vos méthodes, les détails qui finissent cachés dans les murs. Ceux qui ont un projet comprennent pourquoi vous n'êtes pas comme les autres.</p></li>
-        <li data-stage="2"><span class="fw">Livrer</span><h3>Donner envie de signer</h3><p class="fstage">Convaincre votre clientèle cible</p><p>Votre histoire, vos réalisations, ce qui vous démarque. La confiance est bâtie avant même le premier appel.</p></li>
-      </ol>
-    </div>
   </div>
 </section>
 
@@ -291,7 +275,7 @@
 <!-- WHO FILMS -->
 <section class="who-sec b-stone" id="nicolas">
   <div class="wrap who-wrap">
-    <div class="who-photo"><img class="zoom" src="assets/nicolas.jpg" alt="Nicolas Houle sur un chantier" width="1000" height="1500" loading="lazy"></div>
+    <div class="who-photo"><img class="zoom" src="assets/nicolas.jpg" alt="Nicolas Houle sur un chantier" width="1000" height="1500" loading="lazy"><p class="who-name"><strong>Nicolas Houle</strong>Fondateur, Corbo Digital</p></div>
     <div>
       <h2 class="sec-title">Pas une agence de marketing. Une équipe qui vient du chantier.</h2>
       <p class="sec-lead">Avant de tenir une caméra, Nicolas Houle a passé [X] ans en construction. Il connaît les journées de quinze heures, les échéanciers serrés et les équipes qui font un travail remarquable que personne ne voit. C'est pour ça qu'il a fondé Corbo : montrer ce travail avec le respect qu'il mérite.</p>
@@ -352,6 +336,7 @@
   <div class="wrap narrow">
     <h2 class="sec-title">Questions fréquentes</h2>
     <div class="faq-list">
+    <details><summary>En quoi êtes-vous différents d'une agence de marketing?</summary><p>On est une équipe de production, pas une agence. On tourne nous-mêmes, sur vos chantiers, avec notre propre équipement, et Nicolas est sur place à chaque tournage. On choisit les entreprises avec qui on travaille, pour donner à chacune toute notre attention.</p></details>
     <details><summary>Quelle est la différence entre Présence et Pubs?</summary><p>Présence, c'est votre image de marque, gérée au complet : des vidéos de chantier et d'équipe tournées sur place et des plans de drone, publiés sur vos réseaux. Le forfait Impact y ajoute la production cinématique et les photos professionnelles. Pubs, c'est du volume : 10 ou 20 vidéos face caméra par mois pour vos campagnes publicitaires, et vos réseaux restent entre vos mains.</p></details>
     <details><summary>Le budget publicitaire est-il inclus?</summary><p>Non. Avec la gestion des campagnes Meta, on lance et on suit vos campagnes, mais le budget publicitaire est payé directement à Meta par vous.</p></details>
     <details><summary>Combien de temps dure l'engagement?</summary><p>Deux mois minimum pour les forfaits Présence, trois mois minimum pour les forfaits Pubs. La facturation est mensuelle.</p></details>
@@ -369,46 +354,9 @@
       <h2 class="sec-title">Parlons de votre entreprise</h2>
       <p class="sec-lead">Dites-nous ce qui vous intéresse et on vous rappelle en un jour ouvrable pour un appel de 15 minutes.</p>
       <p class="contact-lines"><a href="mailto:info@corbodigital.com">info@corbodigital.com</a><br><a href="tel:+14385299384">438 529-9384</a><br>Montréal, QC</p>
+      <a class="btn btn-light" href="#contact">Réserver un appel</a>
     </div>
 
-    <form class="form" id="leadForm" novalidate>
-      <div class="progress" aria-hidden="true"><span></span></div>
-
-      <fieldset class="step is-active" data-step="1">
-        <legend>Quel forfait vous intéresse?</legend>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="forfait" value="presence" required><span><strong>Présence</strong>Image de marque sur nos réseaux</span></label>
-          <label class="choice"><input type="radio" name="forfait" value="pubs"><span><strong>Pubs</strong>Des pubs vidéo pour nos campagnes</span></label>
-          <label class="choice"><input type="radio" name="forfait" value="indecis"><span><strong>Je ne sais pas encore</strong>On en parlera pendant l'appel</span></label>
-        </div>
-        <p class="err" role="alert"></p>
-        <button type="button" class="btn" data-next>Continuer</button>
-      </fieldset>
-
-      <fieldset class="step" data-step="2">
-        <legend>Votre entreprise</legend>
-        <label class="field">Nom de l'entreprise<input name="entreprise" autocomplete="organization" required maxlength="120"></label>
-        <label class="field">Votre projet <span class="mute">(facultatif)</span><textarea name="message" rows="3" maxlength="1500"></textarea></label>
-        <p class="err" role="alert"></p>
-        <div class="step-nav"><button type="button" class="btn btn-alt" data-prev>Retour</button><button type="button" class="btn" data-next>Continuer</button></div>
-      </fieldset>
-
-      <fieldset class="step" data-step="3">
-        <legend>Comment vous joindre</legend>
-        <label class="field">Nom<input name="nom" autocomplete="name" required maxlength="120"></label>
-        <label class="field">Téléphone<input name="tel" type="tel" autocomplete="tel" required maxlength="30"></label>
-        <label class="field">Courriel<input name="courriel" type="email" autocomplete="email" required maxlength="160"></label>
-        <input type="hidden" name="plan">
-        <input class="hp" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <p class="err" role="alert"></p>
-        <div class="step-nav"><button type="button" class="btn btn-alt" data-prev>Retour</button><button type="submit" class="btn">Envoyer ma demande</button></div>
-      </fieldset>
-
-      <div class="done" hidden>
-        <h3>Demande reçue</h3>
-        <p>Merci. On vous rappelle en un jour ouvrable.</p>
-      </div>
-    </form>
   </div>
 </section>
 
@@ -420,6 +368,51 @@
   <p class="mute">© 2026 Corbo Digital</p>
 </footer>
 
-<script src="script.js?v=25" defer></script>
+<dialog class="lead" id="leadModal" aria-labelledby="leadTitle">
+  <button type="button" class="lead-x" data-close aria-label="Fermer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <p class="lead-title" id="leadTitle">Réserver un appel de 15 minutes</p>
+  <form class="form" id="leadForm" novalidate>
+    <div class="progress" aria-hidden="true"><span></span></div>
+
+    <fieldset class="step is-active" data-step="1">
+      <legend>Quel forfait vous intéresse?</legend>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="forfait" value="presence" required><span><strong>Présence</strong>Image de marque sur nos réseaux</span></label>
+        <label class="choice"><input type="radio" name="forfait" value="pubs"><span><strong>Pubs</strong>Des pubs vidéo pour nos campagnes</span></label>
+        <label class="choice"><input type="radio" name="forfait" value="indecis"><span><strong>Je ne sais pas encore</strong>On en parlera pendant l'appel</span></label>
+      </div>
+      <p class="err" role="alert"></p>
+      <button type="button" class="btn" data-next>Continuer</button>
+    </fieldset>
+
+    <fieldset class="step" data-step="2">
+      <legend>Votre entreprise</legend>
+      <label class="field">Nom de l'entreprise<input name="entreprise" autocomplete="organization" required maxlength="120"></label>
+      <label class="field">Votre projet <span class="mute">(facultatif)</span><textarea name="message" rows="3" maxlength="1500"></textarea></label>
+      <p class="err" role="alert"></p>
+      <div class="step-nav"><button type="button" class="btn btn-alt" data-prev>Retour</button><button type="button" class="btn" data-next>Continuer</button></div>
+    </fieldset>
+
+    <fieldset class="step" data-step="3">
+      <legend>Comment vous joindre</legend>
+      <label class="field">Nom<input name="nom" autocomplete="name" required maxlength="120"></label>
+      <label class="field">Téléphone<input name="tel" type="tel" autocomplete="tel" required maxlength="30"></label>
+      <label class="field">Courriel<input name="courriel" type="email" autocomplete="email" required maxlength="160"></label>
+      <input type="hidden" name="plan">
+      <input class="hp" name="site_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="err" role="alert"></p>
+      <div class="step-nav"><button type="button" class="btn btn-alt" data-prev>Retour</button><button type="submit" class="btn">Envoyer ma demande</button></div>
+    </fieldset>
+
+    <div class="done" hidden>
+      <h3 tabindex="-1">Demande reçue</h3>
+      <p>Merci. On vous rappelle en un jour ouvrable.</p>
+    </div>
+  </form>
+</dialog>
+
+<script src="script.js?v=26" defer></script>
 </body>
 </html>
