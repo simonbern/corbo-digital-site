@@ -81,12 +81,9 @@ document.addEventListener('click', e => {
   e.preventDefault();
   opener = a;
   const f = modal.querySelector('form');
-  if (a.dataset.pick && f?.forfait) {
-    f.querySelector(`input[name=forfait][value=${a.dataset.pick}]`).checked = true;
-    f.plan.value = a.dataset.plan;
-  }
+  if (a.dataset.pick && f) { f.forfait.value = a.dataset.pick; f.plan.value = a.dataset.plan; }
   modal.showModal();
-  (modal.querySelector('.step.is-active input:checked') || modal.querySelector('.step.is-active input:not([type=hidden]),.step.is-active textarea,.done:not([hidden]) h3') || modal.querySelector('[data-close]')).focus({ preventScroll: true });
+  (modal.querySelector('.step.is-active input:not([type=hidden]),.done:not([hidden]) h3') || modal.querySelector('[data-close]')).focus({ preventScroll: true });
 });
 modal?.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) modal.close(); });
 modal?.addEventListener('close', () => { opener?.focus({ preventScroll: true }); opener = null; });
@@ -100,14 +97,16 @@ if (form) {
   const show = n => {
     steps[i].classList.remove('is-active'); i = n; steps[i].classList.add('is-active');
     bar.style.width = ((i + 1) / steps.length * 100) + '%';
-    steps[i].querySelector('input:not([type=radio]),textarea')?.focus({ preventScroll: true });
+    steps[i].querySelector('input:not([type=hidden])')?.focus({ preventScroll: true });
   };
   const valid = step => {
     const err = step.querySelector('.err'); err.textContent = '';
-    if (step.querySelector('input[type=radio]') && !step.querySelector('input:checked')) { err.textContent = 'Choisissez une option pour continuer.'; return false; }
-    for (const f of step.querySelectorAll('[required]:not([type=radio])')) {
+    for (const g of step.querySelectorAll('.choices')) {
+      if (!g.querySelector('input:checked')) { err.textContent = g.dataset.min ? 'Choisissez au moins un objectif pour continuer.' : 'Choisissez une option pour continuer.'; g.querySelector('input').focus(); return false; }
+    }
+    for (const f of step.querySelectorAll('input[required]:not([type=radio]):not([hidden]), label:not([hidden]) > input[name=domaine_precision]')) {
       f.value = f.value.trim();
-      if (!f.checkValidity()) {
+      if (!f.value || !f.checkValidity()) {
         err.textContent = f.type === 'email' ? 'Entrez un courriel valide, par exemple nom@entreprise.com.'
           : f.type === 'tel' ? 'Entrez un numéro de téléphone pour qu\'on puisse vous rappeler.'
           : 'Remplissez ce champ pour continuer.';
@@ -116,6 +115,13 @@ if (form) {
     }
     return true;
   };
+  // "précisez" appears for the three broad fields and is then required
+  const precise = form.querySelector('[data-precise]');
+  form.addEventListener('change', e => {
+    if (e.target.name !== 'domaine') return;
+    precise.hidden = !['Métiers spécialisés', 'Services professionnels', 'Commerce de détail et restauration'].includes(e.target.value);
+    if (!precise.hidden) precise.querySelector('input').focus();
+  });
   form.addEventListener('click', e => {
     if (e.target.closest('[data-next]') && valid(steps[i])) show(i + 1);
     if (e.target.closest('[data-prev]')) show(i - 1);
@@ -123,7 +129,13 @@ if (form) {
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (!valid(steps[i])) return;
-    const data = Object.fromEntries(new FormData(form));
+    const fd = new FormData(form);
+    const data = Object.fromEntries(fd);
+    data.objectifs = fd.getAll('objectifs').join(', ');
+    if (precise.hidden) delete data.domaine_precision;
+    // the GoHighLevel workflow ([VSL] Opt-In) reads these keys; langue FR routes it to the opportunity branch
+    const [first_name, ...rest] = (data.nom || '').split(/\s+/);
+    Object.assign(data, { first_name, last_name: rest.join(' '), email: data.courriel, phone: data.tel, company_name: data.entreprise, langue: 'FR' });
     if (data.site_web) return; // honeypot
     const btn = form.querySelector('[type=submit]'); btn.disabled = true; btn.textContent = 'Envoi…';
     try {
