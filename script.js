@@ -104,7 +104,7 @@ if (form) {
     for (const g of step.querySelectorAll('.choices')) {
       if (!g.querySelector('input:checked')) { err.textContent = g.dataset.min ? 'Choisissez au moins un objectif pour continuer.' : 'Choisissez une option pour continuer.'; g.querySelector('input').focus(); return false; }
     }
-    for (const f of step.querySelectorAll('input[required]:not([type=radio]):not([hidden]), label:not([hidden]) > input[name=domaine_precision]')) {
+    for (const f of step.querySelectorAll('input[required]:not([type=radio]), input[data-precise]:not([hidden])')) {
       f.value = f.value.trim();
       if (!f.value || !f.checkValidity()) {
         err.textContent = f.type === 'email' ? 'Entrez un courriel valide, par exemple nom@entreprise.com.'
@@ -115,12 +115,12 @@ if (form) {
     }
     return true;
   };
-  // "précisez" appears for the three broad fields and is then required
+  // "Autre" opens a précisez field inside its own option, then it is required
   const precise = form.querySelector('[data-precise]');
   form.addEventListener('change', e => {
     if (e.target.name !== 'domaine') return;
-    precise.hidden = !['Métiers spécialisés', 'Services professionnels', 'Commerce de détail et restauration'].includes(e.target.value);
-    if (!precise.hidden) precise.querySelector('input').focus();
+    precise.hidden = e.target.value !== 'Autre';
+    if (!precise.hidden) precise.focus();
   });
   form.addEventListener('click', e => {
     if (e.target.closest('[data-next]') && valid(steps[i])) show(i + 1);

@@ -269,6 +269,9 @@ img.ini{object-fit:cover}
 .choices.compact .choice span{padding:11px var(--s4);color:var(--ink);line-height:1.35}
 .choices.two{grid-template-columns:1fr 1fr}
 .choices.compact .choice input:checked + span{color:#fff}
+.choice .precise{display:block;position:static;opacity:1;width:100%;margin-top:var(--s2);padding:10px var(--s3);border:0;border-radius:4px;background:#fff;color:var(--ink);font:inherit;font-size:16px}
+.choice .precise[hidden]{display:none}
+.choice .precise:focus{outline:3px solid var(--navy);outline-offset:0}
 .choice input:checked + span{background:var(--ink);color:var(--d-2)}
 .choice input:checked + span strong{color:#fff}
 .choice input:focus-visible + span{outline:3px solid var(--navy);outline-offset:2px}
