@@ -163,7 +163,7 @@ section{padding:var(--gap) var(--pad)}
 .gear-cards span{font-size:var(--f15);color:var(--mute);line-height:1.4}
 /* Meta option: its own navy block so it is seen while scrolling */
 .meta-explain{display:grid;grid-template-columns:auto 1fr auto;gap:var(--s5);align-items:center;margin-top:var(--s7);padding:var(--s6) var(--s7);border-radius:6px;background:var(--navy);color:#fff;--focus:#fff}
-.meta-explain > svg{width:40px;height:40px}
+.meta-explain > svg{width:52px;height:52px}
 .meta-explain h3{font-size:var(--f21)}
 .meta-explain p{margin-top:var(--s2);color:#d2daee;max-width:66ch}
 
