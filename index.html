@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500..800&family=Urbanist:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=37">
+<link rel="stylesheet" href="styles.css?v=38">
 <link rel="icon" href="assets/favicon.png">
 <link rel="canonical" href="https://offre.corbodigital.com/">
 <meta property="og:type" content="website">
@@ -43,9 +43,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-1080.jpg?v=37" aria-hidden="true">
-    <source src="assets/hero-mobile-broll.mp4?v=37" media="(max-width: 700px)" type="video/mp4">
-    <source src="assets/hero-1080.mp4?v=37" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-1080.jpg?v=38" aria-hidden="true">
+    <source src="assets/hero-mobile-broll.mp4?v=38" media="(max-width: 700px)" type="video/mp4">
+    <source src="assets/hero-1080.mp4?v=38" type="video/mp4">
   </video>
   <div class="hero-veil"></div>
   <div class="hero-inner">
@@ -59,8 +59,9 @@
 </section>
 
 <!-- LOGOS -->
-<div class="logos b-ink" aria-label="Entreprises qui ont travaillé avec Corbo">
-  <div class="logos-track">
+<div class="logos" aria-label="Entreprises qui ont travaillé avec Corbo">
+  <p class="logos-label" aria-hidden="true">Ils ont travaillé avec Corbo</p>
+  <div class="logos-mask"><div class="logos-track">
     <img src="assets/logos/coffrages-synergy.png" alt="Coffrages Synergy">
     <img src="assets/logos/decasult.svg" alt="Decasult">
     <img src="assets/logos/formax.svg" alt="Formax Sciage Forage">
@@ -71,11 +72,11 @@
     <img src="assets/logos/parachute-montreal.png" alt="Parachute Montréal">
     <img src="assets/logos/maudev.png" alt="MauDev">
     <img src="assets/logos/construction-m-gabriel.png" alt="Construction M. Gabriel">
-  </div>
+  </div></div>
 </div>
 
 <!-- TWO WAYS -->
-<section class="ways b-paper" id="offres">
+<section class="ways" id="offres">
   <div class="wrap">
     <h2 class="sec-title">Deux façons de travailler avec Corbo</h2>
 
@@ -112,10 +113,12 @@
 </section>
 
 <!-- PRESENCE -->
-<section class="b-stone" id="presence">
+<section id="presence">
   <div class="wrap">
-    <h2 class="sec-title">Une image haut de gamme sur vos réseaux</h2>
-    <p class="sec-lead">Découvrez quel forfait vous convient.</p>
+    <div class="g2 sec-head">
+      <h2 class="sec-title">Une image haut de gamme sur vos réseaux</h2>
+      <p class="sec-lead">Découvrez quel forfait vous convient.</p>
+    </div>
 
     <div class="plans" data-carousel>
       <article class="plan">
@@ -188,13 +191,11 @@
 </section>
 
 <!-- PUBS -->
-<section class="b-stone" id="pubs">
+<section id="pubs">
   <div class="wrap">
-    <div class="pubs-head">
-      <div>
-        <h2 class="sec-title">Des pubs vidéo en volume, chaque mois</h2>
-        <p class="sec-lead">Des vidéos face caméra, écrites, tournées et montées pour vos campagnes publicitaires.</p>
-      </div>
+    <div class="g2 sec-head">
+      <h2 class="sec-title">Des pubs vidéo en volume, chaque mois</h2>
+      <p class="sec-lead">Des vidéos face caméra, écrites, tournées et montées pour vos campagnes publicitaires.</p>
     </div>
 
     <div class="plans" data-carousel>
@@ -234,10 +235,12 @@
 </section>
 
 <!-- WORK -->
-<section class="work b-ink" id="realisations">
+<section class="work" id="realisations">
   <div class="wrap">
-    <h2 class="sec-title">Ce qu'on a filmé</h2>
-    <p class="sec-lead">Des images tournées chez nos clients, au sol et au drone, en format vertical pour vos réseaux.</p>
+    <div class="g2 sec-head">
+      <h2 class="sec-title">Ce qu'on a filmé</h2>
+      <p class="sec-lead">Des images tournées chez nos clients, au sol et au drone, en format vertical pour vos réseaux.</p>
+    </div>
     <div class="reels" data-carousel>
         <figure class="vreel"><video muted loop playsinline preload="none" poster="assets/reels/fpv-tours.jpg" data-src="assets/reels/fpv-tours.mp4"></video><figcaption>Drone FPV entre les tours</figcaption></figure>
         <figure class="vreel"><video muted loop playsinline preload="none" poster="assets/reels/grue-neige.jpg" data-src="assets/reels/grue-neige.mp4"></video><figcaption>Au sommet de la grue</figcaption></figure>
@@ -275,8 +278,8 @@
 </section>
 
 <!-- WHO FILMS -->
-<section class="who-sec b-stone" id="nicolas">
-  <div class="wrap who-wrap">
+<section class="who-sec" id="nicolas">
+  <div class="wrap g2 who-wrap">
     <div class="who-photo"><img class="zoom" src="assets/nicolas.jpg" alt="Nicolas Houle sur un chantier" width="1000" height="1500" loading="lazy"><p class="who-name"><strong>Nicolas Houle</strong>Fondateur, Corbo Digital</p></div>
     <div>
       <h2 class="sec-title">Une équipe de production qui connaît les codes du chantier.</h2>
@@ -293,24 +296,24 @@
 </section>
 
 <!-- PROCESS -->
-<section class="process b-paper">
-  <div class="wrap process-wrap">
+<section class="process">
+  <div class="wrap g2 process-wrap">
     <div class="process-photo"><img class="zoom" src="assets/process-charpente.jpg" alt="Une grue dépose une ferme de toit sur un chantier, filmé au drone par Corbo" width="1000" height="1500" loading="lazy"></div>
     <div>
       <h2 class="sec-title">Comment ça se passe</h2>
-      <div class="steps">
-        <div><h3>Un appel de 15 minutes</h3><p>On regarde ensemble ce que vous voulez accomplir et quel forfait y répond.</p></div>
-        <div><h3>Le tournage sur place</h3><p>On vient sur vos chantiers avec la caméra, les drones et les micros.</p></div>
-        <div><h3>Le montage</h3><p>Chaque vidéo est montée pour la plateforme où elle sera vue.</p></div>
-        <div><h3>La publication</h3><p>On publie sur vos réseaux ou on lance vos campagnes, selon votre forfait.</p></div>
-      </div>
+      <ol class="steps">
+        <li><h3>Un appel de 15 minutes</h3><p>On regarde ensemble ce que vous voulez accomplir et quel forfait y répond.</p></li>
+        <li><h3>Le tournage sur place</h3><p>On vient sur vos chantiers avec la caméra, les drones et les micros.</p></li>
+        <li><h3>Le montage</h3><p>Chaque vidéo est montée pour la plateforme où elle sera vue.</p></li>
+        <li><h3>La publication</h3><p>On publie sur vos réseaux ou on lance vos campagnes, selon votre forfait.</p></li>
+      </ol>
       <a class="btn" href="#contact">Réserver un appel</a>
     </div>
   </div>
 </section>
 
 <!-- REVIEWS -->
-<section class="reviews b-stone">
+<section class="reviews">
   <div class="wrap">
     <div class="quotes-head">
       <h2 class="sec-title">Ce qu'en disent nos clients</h2>
@@ -329,20 +332,20 @@
       <blockquote class="quote">
         <div class="q-top"><div class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></div><span class="src"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Avis Google</span></div>
         <p>« Entrepreneur dévoué et très professionnel. Il propose des idées innovantes et livre des résultats vidéo d'une qualité impressionnante. Service efficace et souci du détail du début à la fin. »</p>
-        <footer><img class="ini" src="assets/reviews/rg.jpg?v=37" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Raphael Gentile</strong>Client</span></footer>
+        <footer><img class="ini" src="assets/reviews/rg.jpg?v=38" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Raphael Gentile</strong>Client</span></footer>
       </blockquote>
       <blockquote class="quote">
         <div class="q-top"><div class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></div><span class="src"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Avis Google</span></div>
         <p>« Il offre le service de vidéo avec un drone en complément avec sa caméra et je trouve vraiment que c'est la coche de plus qui fait la différence. »</p>
-        <footer><img class="ini" src="assets/reviews/jc.jpg?v=37" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Jerome Chretien</strong>Client</span></footer>
+        <footer><img class="ini" src="assets/reviews/jc.jpg?v=38" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Jerome Chretien</strong>Client</span></footer>
       </blockquote>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq b-paper" id="faq">
-  <div class="wrap narrow">
+<section class="faq" id="faq">
+  <div class="wrap g2">
     <h2 class="sec-title">Questions fréquentes</h2>
     <div class="faq-list">
     <details><summary>En quoi êtes-vous différents d'une agence de marketing?</summary><p>On est une équipe de production, pas une agence. On tourne nous-mêmes, sur vos chantiers, avec notre propre équipement. On choisit les entreprises avec qui on travaille, pour donner à chacune toute notre attention.</p></details>
@@ -357,8 +360,9 @@
 </section>
 
 <!-- CONTACT -->
-<section class="contact b-navy" id="contact">
-  <div class="wrap contact-wrap">
+<section class="contact" id="contact">
+  <img class="contact-bg" src="assets/portfolio/acier.jpg?v=2" alt="" loading="lazy" width="1620" height="1080">
+  <div class="wrap">
     <div class="contact-head">
       <h2 class="sec-title">Parlons de votre entreprise</h2>
       <p class="sec-lead">Dites-nous ce qui vous intéresse et on vous rappelle en un jour ouvrable pour un appel de 15 minutes.</p>
@@ -371,7 +375,7 @@
 
 </main>
 
-<footer class="foot b-ink">
+<footer class="foot">
   <img src="assets/logo-white.png" alt="Corbo Digital" class="foot-logo" width="905" height="408">
   <nav aria-label="Pied de page"><a href="#presence">Présence</a><a href="#pubs">Pubs</a><a href="#realisations">Réalisations</a><a href="#contact">Contact</a><a href="https://www.instagram.com/corbodigital/" rel="noopener">Instagram</a></nav>
   <p class="mute">© 2026 Corbo Digital</p>
@@ -457,6 +461,6 @@
   </form>
 </dialog>
 
-<script src="script.js?v=37" defer></script>
+<script src="script.js?v=38" defer></script>
 </body>
 </html>

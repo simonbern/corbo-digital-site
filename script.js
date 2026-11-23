@@ -36,12 +36,52 @@ nav.addEventListener('click', e => { if (e.target.closest('a') && nav.classList.
 const track = document.querySelector('.logos-track');
 if (track) track.append(...[...track.children].map(n => { const c = n.cloneNode(true); c.alt = ''; c.setAttribute('aria-hidden', 'true'); return c; }));
 
-// section reveal, all at once when the section arrives
-const sections = document.querySelectorAll('main > section:not(.hero)');
+// motion, same language as the Jay Alvarrez page. Nothing hides without IntersectionObserver or with reduced motion.
 if ('IntersectionObserver' in window && !reduce) {
-  sections.forEach(s => s.classList.add('reveal'));
+  // headings: each word rises out of its own mask
+  document.querySelectorAll('h1, main h2').forEach(h => {
+    let n = 0;
+    const split = el => [...el.childNodes].forEach(c => {
+      if (c.nodeType !== 3) return split(c);
+      const f = document.createDocumentFragment();
+      c.textContent.split(/(\s+)/).forEach(t => {
+        if (!t) return; if (!t.trim()) return f.append(t);
+        const w = document.createElement('span'), i = document.createElement('span');
+        w.className = 'w'; i.textContent = t; i.style.setProperty('--d', n++); w.append(i); f.append(w);
+      });
+      c.replaceWith(f);
+    });
+    split(h);
+  });
+  requestAnimationFrame(() => requestAnimationFrame(() => document.querySelector('.hero-title')?.classList.add('in')));
+  // blocks rise in as they arrive; siblings in a row stagger
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
-  sections.forEach(s => io.observe(s));
+  const blocks = 'main h2, .sec-lead, .way, .ways-help, .plan, .gear-title, .gear-cards > li, .compare, .meta-explain, .vreel, .reel, .who-photo, .who-points > li, .who-end, .process-photo, .steps > li, .quote, .faq-list > details, .contact-lines, main section .btn:not(.plan .btn):not(.way .btn):not(.meta-explain .btn):not(.hero .btn)';
+  document.querySelectorAll(blocks).forEach(el => {
+    el.classList.add('rv');
+    const sibs = [...el.parentNode.children].filter(c => c.matches(blocks));
+    el.style.setProperty('--i', Math.min(sibs.indexOf(el), 6));
+    io.observe(el);
+  });
+  // buttons: one light streak the first time each comes into view
+  const bio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('shine'), 500); bio.unobserve(e.target); } }), { threshold: 1 });
+  document.querySelectorAll('main .btn').forEach(b => bio.observe(b));
+}
+
+// process: the line fills with the scroll, a step lights up once the line reaches its dot
+const stepList = document.querySelector('.steps');
+if (stepList) {
+  const lis = [...stepList.children]; let tick = 0;
+  const mid = li => li.offsetTop + 16; // dot centre, matches the CSS
+  const draw = () => {
+    tick = 0;
+    const top = mid(lis[0]), len = mid(lis[lis.length - 1]) - top;
+    const fill = reduce ? len : Math.max(0, Math.min(len, innerHeight * .62 - (stepList.getBoundingClientRect().top + top)));
+    stepList.style.setProperty('--top', top + 'px'); stepList.style.setProperty('--len', len + 'px'); stepList.style.setProperty('--fill', fill + 'px');
+    lis.forEach(li => li.classList.toggle('on', mid(li) - top <= fill + 1));
+  };
+  const ask = () => { if (!tick) tick = requestAnimationFrame(draw); };
+  addEventListener('scroll', ask, { passive: true }); addEventListener('resize', ask); draw();
 }
 
 // clips load and play only while on screen
