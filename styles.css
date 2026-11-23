@@ -30,6 +30,8 @@ html{scrollbar-gutter:stable;scroll-behavior:smooth;scroll-padding-top:80px;back
 body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img,video{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
+/* nothing on the page is underlined */
+u,ins,abbr{text-decoration:none}
 ul,ol{list-style:none}
 :focus-visible{outline:2px solid var(--focus,var(--ink));outline-offset:4px;border-radius:3px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
@@ -131,8 +133,8 @@ section{padding:var(--sec) var(--pad);position:relative}
 .way-facts dd{color:var(--soft);font-size:var(--f15);line-height:1.55}
 .way .btn{margin-top:auto}
 .ways-help{margin-top:clamp(56px,6vw,80px);color:var(--soft);font-size:clamp(17px,1.3vw,19px)}
-.ways-help a{color:#fff;font-weight:600;background:linear-gradient(var(--accent),var(--accent)) 0 100%/100% 2px no-repeat;padding-bottom:3px;transition:background-size .3s var(--ease)}
-.ways-help a:hover{background-size:0 2px}
+.ways-help a{color:var(--accent);font-weight:600;transition:color .2s}
+.ways-help a:hover{color:#fff}
 
 /* plans: two panels, the stronger one in brand navy */
 .sec-head{align-items:end}
