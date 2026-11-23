@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@500..800&family=Urbanist:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=40">
+<link rel="stylesheet" href="styles.css?v=42">
 <link rel="icon" href="assets/favicon.png">
 <link rel="canonical" href="https://offre.corbodigital.com/">
 <meta property="og:type" content="website">
@@ -31,8 +31,8 @@
   <nav class="nav" id="nav" aria-label="Navigation principale">
     <a href="#presence">Présence</a>
     <a href="#pubs">Pubs</a>
-    <a href="#realisations">Réalisations</a>
     <a href="#nicolas">Qui filme</a>
+    <a href="#realisations">Réalisations</a>
     <a href="#faq">FAQ</a>
   </nav>
   <a class="btn btn-light btn-sm" href="#contact">Réserver un appel</a>
@@ -43,9 +43,9 @@
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-1080.jpg?v=40" aria-hidden="true">
-    <source src="assets/hero-mobile-broll.mp4?v=40" media="(max-width: 700px)" type="video/mp4">
-    <source src="assets/hero-1080.mp4?v=40" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/hero-1080.jpg?v=42" aria-hidden="true">
+    <source src="assets/hero-mobile-broll.mp4?v=42" media="(max-width: 700px)" type="video/mp4">
+    <source src="assets/hero-1080.mp4?v=42" type="video/mp4">
   </video>
   <div class="hero-veil"></div>
   <div class="hero-inner">
@@ -148,14 +148,17 @@
     </div>
 
     <div class="gear">
-      <h3 class="gear-title">L'équipement que nous amenons sur chaque chantier</h3>
-      <ul class="gear-cards" data-carousel>
-        <li><div class="gear-photo"><img src="assets/equipement/camera-6k.jpg" alt="" loading="lazy" onerror="this.remove()"></div><strong>Caméra 6K</strong><span>L'image la plus nette, pour vos vidéos principales</span></li>
-        <li><div class="gear-photo"><img src="assets/equipement/drone-fpv.jpg" alt="" loading="lazy" onerror="this.remove()"></div><strong>Drone FPV 4K</strong><span>Les plans qui foncent à travers votre chantier</span></li>
-        <li><div class="gear-photo"><img src="assets/equipement/drone-4k.jpg" alt="" loading="lazy" onerror="this.remove()"></div><strong>Drone 4K</strong><span>Les vues aériennes de vos projets</span></li>
-        <li><div class="gear-photo"><img src="assets/equipement/camera-action.jpg" alt="" loading="lazy" onerror="this.remove()"></div><strong>Caméra d'action 4K</strong><span>Le point de vue de vos gars, au cœur du travail</span></li>
-        <li><div class="gear-photo"><img src="assets/equipement/micros.jpg" alt="" loading="lazy" onerror="this.remove()"></div><strong>Micros</strong><span>Un son clair, même avec la machinerie autour</span></li>
-        <li><div class="gear-photo"><img src="assets/equipement/lunettes-meta.jpg" alt="" loading="lazy" onerror="this.remove()"></div><strong>Lunettes Meta FPV</strong><span>Filmer en gardant les mains libres</span></li>
+      <div class="gear-head">
+        <h3 class="gear-title">L'équipement que nous amenons sur chaque chantier</h3>
+        <div class="row-nav"><button type="button" class="qnav" data-dir="-1" data-row=".gear-cards" aria-label="Équipement précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><button type="button" class="qnav" data-dir="1" data-row=".gear-cards" aria-label="Équipement suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div>
+      </div>
+      <ul class="gear-cards">
+        <li><div class="gear-photo"><img src="assets/equipement/camera-6k.jpg" alt="" onerror="this.remove()"></div><strong>Caméra 6K</strong><span>L'image la plus nette, pour vos vidéos principales</span></li>
+        <li><div class="gear-photo"><img src="assets/equipement/drone-fpv.jpg" alt="" onerror="this.remove()"></div><strong>Drone FPV 4K</strong><span>Les plans qui foncent à travers votre chantier</span></li>
+        <li><div class="gear-photo"><img src="assets/equipement/drone-4k.jpg" alt="" onerror="this.remove()"></div><strong>Drone 4K</strong><span>Les vues aériennes de vos projets</span></li>
+        <li><div class="gear-photo"><img src="assets/equipement/camera-action.jpg" alt="" onerror="this.remove()"></div><strong>Caméra d'action 4K</strong><span>Le point de vue de vos gars, au cœur du travail</span></li>
+        <li><div class="gear-photo"><img src="assets/equipement/micros.jpg" alt="" onerror="this.remove()"></div><strong>Micros</strong><span>Un son clair, même avec la machinerie autour</span></li>
+        <li><div class="gear-photo"><img src="assets/equipement/lunettes-meta.jpg" alt="" onerror="this.remove()"></div><strong>Lunettes Meta FPV</strong><span>Filmer en gardant les mains libres</span></li>
       </ul>
     </div>
 
@@ -200,10 +203,10 @@
 
     <div class="plans" data-carousel>
       <article class="plan">
-        <h3>Pubs 10</h3>
+        <h3>Rafale</h3>
         <p class="rhythm">10 pubs vidéo par mois</p>
         <p class="commit">3 mois minimum, facturation mensuelle</p>
-        <a class="btn" href="#contact" data-pick="pubs" data-plan="Pubs 10">Parler de Pubs 10</a>
+        <a class="btn" href="#contact" data-pick="pubs" data-plan="Rafale">Parler de Rafale</a>
         <ul class="incl">
           <li>Concepts et scripts des pubs</li>
           <li>Tournage face caméra et montage</li>
@@ -211,10 +214,10 @@
         </ul>
       </article>
       <article class="plan plan-dark">
-        <h3>Pubs 20</h3>
+        <h3>Déferlante</h3>
         <p class="rhythm">20 pubs vidéo par mois</p>
         <p class="commit">3 mois minimum, facturation mensuelle</p>
-        <a class="btn btn-light" href="#contact" data-pick="pubs" data-plan="Pubs 20">Parler de Pubs 20</a>
+        <a class="btn btn-light" href="#contact" data-pick="pubs" data-plan="Déferlante">Parler de Déferlante</a>
         <ul class="incl">
           <li>Concepts et scripts des pubs</li>
           <li>Tournage face caméra et montage</li>
@@ -230,6 +233,24 @@
       <p>On lance et on suit vos campagnes, on teste les pubs entre elles et on intègre un formulaire de demande de services directement dans les annonces. Le budget publicitaire est payé directement à Meta par vous.</p>
       </div>
       <a class="btn btn-light" href="#contact" data-pick="pubs" data-plan="Gestion des campagnes Meta">En savoir plus</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO FILMS -->
+<section class="who-sec" id="nicolas">
+  <div class="wrap g2 who-wrap">
+    <div class="who-photo"><img class="zoom" src="assets/nicolas.jpg" alt="Nicolas Houle sur un chantier" width="1000" height="1500" loading="lazy"><p class="who-name"><strong>Nicolas Houle</strong>Fondateur, Corbo Digital</p></div>
+    <div>
+      <h2 class="sec-title">Une équipe de production qui connaît les codes du chantier.</h2>
+      <p class="sec-lead">Avant de tenir une caméra, Nicolas Houle a passé 6 ans en construction. Il connaît les journées de quinze heures, les échéanciers serrés et les équipes qui font un travail remarquable que personne ne voit. C'est pour ça qu'il a fondé Corbo : montrer ce travail avec le respect qu'il mérite.</p>
+      <ul class="who-points">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><strong>Des tournages planifiés selon vos chantiers.</strong> On vient aux moments qui comptent : coulées, levées de structure, livraisons.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.4 5 2.8 5 5.8"/></svg><span><strong>Une équipe à l'interne.</strong> Le tournage et le montage se font ici, par du monde qui connaît la réalité d'un chantier québécois.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h18M5 17v-2a7 7 0 0 1 14 0v2M10 8.3V5h4v3.3"/></svg><span><strong>Casque et bottes à cap d'acier compris.</strong> Votre surintendant va nous trouver plus en règle que certains de ses gars.</span></li>
+      </ul>
+      <p class="who-end">On choisit les entreprises avec qui on travaille. Si la qualité compte pour vous, on devrait se parler.</p>
+      <a class="btn" href="#contact">Réserver un appel avec Nicolas</a>
     </div>
   </div>
 </section>
@@ -256,11 +277,11 @@
         </figure>
         <figure class="clip">
           <video muted loop playsinline preload="none" poster="assets/portfolio/acier.jpg?v=2" data-src="assets/portfolio/acier.mp4?v=2"></video>
-          <figcaption><strong>Structure d'acier</strong>Grue, colonnes et monteurs au coucher du soleil</figcaption>
+          <figcaption><strong>Grue Mobile Veilleux</strong>Grue, colonnes et monteurs au coucher du soleil</figcaption>
         </figure>
         <figure class="clip">
           <video muted loop playsinline preload="none" poster="assets/portfolio/nuit.jpg?v=2" data-src="assets/portfolio/nuit.mp4?v=2"></video>
-          <figcaption><strong>Chantier de nuit</strong>Machinerie lourde et éclairage de chantier, image de marque</figcaption>
+          <figcaption><strong>EBC</strong>Machinerie lourde et éclairage de chantier, image de marque</figcaption>
         </figure>
         <figure class="clip">
           <video muted loop playsinline preload="none" poster="assets/portfolio/cmg.jpg?v=2" data-src="assets/portfolio/cmg.mp4?v=2"></video>
@@ -269,45 +290,10 @@
       </div>
       <div class="reel-list" role="group" aria-label="Choisir une réalisation">
         <button type="button" class="reel-btn is-active" aria-pressed="true"><strong>Formax</strong><span>Sciage et forage de béton, recrutement et reels</span></button>
-        <button type="button" class="reel-btn" aria-pressed="false"><strong>Structure d'acier</strong><span>Grue, colonnes et monteurs au coucher du soleil</span></button>
-        <button type="button" class="reel-btn" aria-pressed="false"><strong>Chantier de nuit</strong><span>Machinerie lourde et éclairage de chantier, image de marque</span></button>
+        <button type="button" class="reel-btn" aria-pressed="false"><strong>Grue Mobile Veilleux</strong><span>Grue, colonnes et monteurs au coucher du soleil</span></button>
+        <button type="button" class="reel-btn" aria-pressed="false"><strong>EBC</strong><span>Machinerie lourde et éclairage de chantier, image de marque</span></button>
         <button type="button" class="reel-btn" aria-pressed="false"><strong>Construction Matthew Gabriel</strong><span>Recrutement et image de marque</span></button>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHO FILMS -->
-<section class="who-sec" id="nicolas">
-  <div class="wrap g2 who-wrap">
-    <div class="who-photo"><img class="zoom" src="assets/nicolas.jpg" alt="Nicolas Houle sur un chantier" width="1000" height="1500" loading="lazy"><p class="who-name"><strong>Nicolas Houle</strong>Fondateur, Corbo Digital</p></div>
-    <div>
-      <h2 class="sec-title">Une équipe de production qui connaît les codes du chantier.</h2>
-      <p class="sec-lead">Avant de tenir une caméra, Nicolas Houle a passé 6 ans en construction. Il connaît les journées de quinze heures, les échéanciers serrés et les équipes qui font un travail remarquable que personne ne voit. C'est pour ça qu'il a fondé Corbo : montrer ce travail avec le respect qu'il mérite.</p>
-      <ul class="who-points">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span><strong>Des tournages planifiés selon vos chantiers.</strong> On vient aux moments qui comptent : coulées, levées de structure, livraisons.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2c2.8.4 5 2.8 5 5.8"/></svg><span><strong>Une équipe à l'interne.</strong> Le tournage et le montage se font ici, par du monde qui connaît la réalité d'un chantier québécois.</span></li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17h18M5 17v-2a7 7 0 0 1 14 0v2M10 8.3V5h4v3.3"/></svg><span><strong>Casque et bottes à cap d'acier compris.</strong> Votre surintendant va nous trouver plus en règle que certains de ses gars.</span></li>
-      </ul>
-      <p class="who-end">On choisit les entreprises avec qui on travaille. Si la qualité compte pour vous, on devrait se parler.</p>
-      <a class="btn" href="#contact">Réserver un appel avec Nicolas</a>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="process">
-  <div class="wrap g2 process-wrap">
-    <div class="process-photo"><img class="zoom" src="assets/process-charpente.jpg" alt="Une grue dépose une ferme de toit sur un chantier, filmé au drone par Corbo" width="1000" height="1500" loading="lazy"></div>
-    <div>
-      <h2 class="sec-title">Comment ça se passe</h2>
-      <ol class="steps">
-        <li><h3>Un appel de 15 minutes</h3><p>On regarde ensemble ce que vous voulez accomplir et quel forfait y répond.</p></li>
-        <li><h3>Le tournage sur place</h3><p>On vient sur vos chantiers avec la caméra, les drones et les micros.</p></li>
-        <li><h3>Le montage</h3><p>Chaque vidéo est montée pour la plateforme où elle sera vue.</p></li>
-        <li><h3>La publication</h3><p>On publie sur vos réseaux ou on lance vos campagnes, selon votre forfait.</p></li>
-      </ol>
-      <a class="btn" href="#contact">Réserver un appel</a>
     </div>
   </div>
 </section>
@@ -318,8 +304,8 @@
     <div class="quotes-head">
       <h2 class="sec-title">Ce qu'en disent nos clients</h2>
       <div class="quotes-nav">
-        <button type="button" class="qnav" data-dir="-1" aria-label="Avis précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button type="button" class="qnav" data-dir="1" aria-label="Avis suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+        <button type="button" class="qnav" data-dir="-1" data-row=".quotes" aria-label="Avis précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button type="button" class="qnav" data-dir="1" data-row=".quotes" aria-label="Avis suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
       </div>
     </div>
     <!-- add a review: copy one blockquote below; the carousel takes any number -->
@@ -332,12 +318,12 @@
       <blockquote class="quote">
         <div class="q-top"><div class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></div><span class="src"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Avis Google</span></div>
         <p>« Entrepreneur dévoué et très professionnel. Il propose des idées innovantes et livre des résultats vidéo d'une qualité impressionnante. Service efficace et souci du détail du début à la fin. »</p>
-        <footer><img class="ini" src="assets/reviews/rg.jpg?v=40" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Raphael Gentile</strong>Client</span></footer>
+        <footer><img class="ini" src="assets/reviews/rg.jpg?v=42" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Raphael Gentile</strong>Client</span></footer>
       </blockquote>
       <blockquote class="quote">
         <div class="q-top"><div class="stars" role="img" aria-label="5 étoiles sur 5"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L10 14.9l-5.2 2.8 1-5.9L1.5 7.7l5.9-.8z"/></svg></div><span class="src"><svg class="g" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>Avis Google</span></div>
         <p>« Il offre le service de vidéo avec un drone en complément avec sa caméra et je trouve vraiment que c'est la coche de plus qui fait la différence. »</p>
-        <footer><img class="ini" src="assets/reviews/jc.jpg?v=40" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Jerome Chretien</strong>Client</span></footer>
+        <footer><img class="ini" src="assets/reviews/jc.jpg?v=42" alt="" width="40" height="40" loading="lazy"><span class="who"><strong>Jerome Chretien</strong>Client</span></footer>
       </blockquote>
     </div>
   </div>
@@ -461,6 +447,6 @@
   </form>
 </dialog>
 
-<script src="script.js?v=40" defer></script>
+<script src="script.js?v=42" defer></script>
 </body>
 </html>

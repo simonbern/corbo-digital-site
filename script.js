@@ -56,7 +56,7 @@ if ('IntersectionObserver' in window && !reduce) {
   requestAnimationFrame(() => requestAnimationFrame(() => document.querySelector('.hero-title')?.classList.add('in')));
   // blocks rise in as they arrive; siblings in a row stagger
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.12 });
-  const blocks = 'main h2, .sec-lead, .way, .ways-help, .plan, .gear-title, .gear-cards > li, .compare, .meta-explain, .vreel, .reel, .who-photo, .who-points > li, .who-end, .process-photo, .steps > li, .quote, .faq-list > details, .contact-lines, main section .btn:not(.plan .btn):not(.way .btn):not(.meta-explain .btn):not(.hero .btn)';
+  const blocks = 'main h2, .sec-lead, .way, .ways-help, .plan, .gear-title, .gear-cards, .compare, .meta-explain, .vreel, .reel, .who-photo, .who-points > li, .who-end, .quotes, .faq-list > details, .contact-lines, main section .btn:not(.plan .btn):not(.way .btn):not(.meta-explain .btn):not(.hero .btn)';
   document.querySelectorAll(blocks).forEach(el => {
     el.classList.add('rv');
     const sibs = [...el.parentNode.children].filter(c => c.matches(blocks));
@@ -68,21 +68,6 @@ if ('IntersectionObserver' in window && !reduce) {
   document.querySelectorAll('main .btn').forEach(b => bio.observe(b));
 }
 
-// process: the line fills with the scroll, a step lights up once the line reaches its dot
-const stepList = document.querySelector('.steps');
-if (stepList) {
-  const lis = [...stepList.children]; let tick = 0;
-  const mid = li => li.offsetTop + 16; // dot centre, matches the CSS
-  const draw = () => {
-    tick = 0;
-    const top = mid(lis[0]), len = mid(lis[lis.length - 1]) - top;
-    const fill = reduce ? len : Math.max(0, Math.min(len, innerHeight * .62 - (stepList.getBoundingClientRect().top + top)));
-    stepList.style.setProperty('--top', top + 'px'); stepList.style.setProperty('--len', len + 'px'); stepList.style.setProperty('--fill', fill + 'px');
-    lis.forEach(li => li.classList.toggle('on', mid(li) - top <= fill + 1));
-  };
-  const ask = () => { if (!tick) tick = requestAnimationFrame(draw); };
-  addEventListener('scroll', ask, { passive: true }); addEventListener('resize', ask); draw();
-}
 
 // clips load and play only while on screen
 const clips = document.querySelectorAll('video[data-src]');
@@ -112,11 +97,10 @@ const pick = n => {
 };
 reelBtns.forEach((b, k) => ['click', 'mouseenter', 'focus'].forEach(ev => b.addEventListener(ev, () => pick(k))));
 
-// reviews: the arrows move the row by one card
-const quotes = document.querySelector('.quotes');
+// sideways rows (reviews, equipment): each arrow moves its row by one card
 document.querySelectorAll('.qnav').forEach(b => b.addEventListener('click', () => {
-  const card = quotes.querySelector('.quote');
-  quotes.scrollBy({ left: +b.dataset.dir * (card.offsetWidth + 16), behavior: reduce ? 'auto' : 'smooth' });
+  const row = document.querySelector(b.dataset.row), card = row.firstElementChild;
+  row.scrollBy({ left: +b.dataset.dir * (card.offsetWidth + parseFloat(getComputedStyle(row).columnGap || 0)), behavior: reduce ? 'auto' : 'smooth' });
 }));
 
 // every "book a call" link opens the form over the page; a plan button arrives with its plan chosen
