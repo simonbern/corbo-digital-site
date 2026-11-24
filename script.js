@@ -198,7 +198,7 @@ if (form) {
       form.querySelector('.done').hidden = false;
       window.fbq?.('track', 'Lead', { content_name: data.plan || data.forfait });
     } catch {
-      steps[i].querySelector('.err').textContent = 'La demande n\'a pas pu être envoyée. Écrivez-nous à info@corbodigital.com ou appelez au 438 529-9384.';
+      steps[i].querySelector('.err').textContent = 'La demande n\'a pas pu être envoyée. Réessayez dans quelques instants.';
       btn.disabled = false; btn.textContent = 'Envoyer ma demande';
     }
   });
