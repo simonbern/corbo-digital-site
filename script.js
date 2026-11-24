@@ -2,6 +2,19 @@
 document.documentElement.classList.add('js');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// ad tracking: the utm_* tags of the ad that brought the visitor (Meta fills them from the ad's URL parameters).
+// Kept for the visit so they survive in-page navigation, and sent with the form.
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'utm_id', 'fbclid'];
+const utm = (() => {
+  const q = new URLSearchParams(location.search), got = {};
+  UTM_KEYS.forEach(k => { const v = q.get(k); if (v) got[k] = v.trim().slice(0, 200); });
+  try {
+    if (Object.keys(got).length) sessionStorage.setItem('corbo_utm', JSON.stringify(got));
+    else Object.assign(got, JSON.parse(sessionStorage.getItem('corbo_utm') || '{}'));
+  } catch { /* storage blocked: keep what the URL gave */ }
+  return got;
+})();
+
 // If FORM_ENDPOINT is emptied the form says it could not send and gives the phone and email.
 // The webhook is public by nature (it sits in page code); the honeypot field filters basic bots.
 const FORM_ENDPOINT = 'https://services.leadconnectorhq.com/hooks/4cBAkpl0rDDzH76hT51A/webhook-trigger/ZDehhcxhbNSGAPFY4j6c';   // LeadConnector webhook that receives the leads
@@ -167,6 +180,11 @@ if (form) {
     // the GoHighLevel workflow ([VSL] Opt-In) reads these keys; langue FR routes it to the opportunity branch
     const [first_name, ...rest] = (data.nom || '').split(/\s+/);
     Object.assign(data, { first_name, last_name: rest.join(' '), email: data.courriel, phone: data.tel, company_name: data.entreprise, langue: 'FR' });
+    // the GoHighLevel fields Campaign, Adset Name, Ad Name, Platform and Placement read these keys
+    Object.assign(data, utm, {
+      campaign: utm.utm_campaign || '', adset_name: utm.utm_term || '', ad_name: utm.utm_content || '',
+      platform: utm.utm_source || '', placement: utm.utm_medium || '', page_url: location.href.split('#')[0].slice(0, 500),
+    });
     if (data.site_web) return; // honeypot
     const btn = form.querySelector('[type=submit]'); btn.disabled = true; btn.textContent = 'Envoi…';
     try {
