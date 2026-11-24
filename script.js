@@ -180,9 +180,10 @@ if (form) {
     // the GoHighLevel workflow ([VSL] Opt-In) reads these keys; langue FR routes it to the opportunity branch
     const [first_name, ...rest] = (data.nom || '').split(/\s+/);
     Object.assign(data, { first_name, last_name: rest.join(' '), email: data.courriel, phone: data.tel, company_name: data.entreprise, langue: 'FR' });
-    // the GoHighLevel fields Campaign, Adset Name, Ad Name, Platform and Placement read these keys
+    // the opportunity fields Campaign, Adset Name, Ad Name, Platform and Placement in the [VSL] Opt-In workflow read
+    // campaign_name, adset_name, ad_name, platform and placement
     Object.assign(data, utm, {
-      campaign: utm.utm_campaign || '', adset_name: utm.utm_term || '', ad_name: utm.utm_content || '',
+      campaign: utm.utm_campaign || '', campaign_name: utm.utm_campaign || '', adset_name: utm.utm_term || '', ad_name: utm.utm_content || '',
       platform: utm.utm_source || '', placement: utm.utm_medium || '', page_url: location.href.split('#')[0].slice(0, 500),
     });
     if (data.site_web) return; // honeypot
