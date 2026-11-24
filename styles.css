@@ -346,6 +346,26 @@ html:has(.lead[open]){overflow:hidden}
 .done h3{font:800 var(--f28)/1.1 var(--display);text-transform:uppercase}
 .done p{margin-top:var(--s3);color:var(--t-2)}
 
+/* VSL: a small player in the bottom-right corner that follows the scroll; "big" grows it to the centre over a darker page */
+.vsl-veil{position:fixed;inset:0;z-index:38;background:rgba(5,10,18,.62);opacity:0;pointer-events:none;transition:opacity .5s var(--ease)}
+.vsl.is-big .vsl-veil{opacity:1;pointer-events:auto}
+.vsl-box{--w:clamp(176px,22vw,340px);position:fixed;z-index:39;left:calc(100% - var(--w) - 24px);top:calc(100% - var(--w) * .5625 - 24px);width:var(--w);aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:#000;box-shadow:0 20px 50px rgba(0,0,0,.55);transform-origin:0 0;transition:transform .6s var(--ease)}
+.vsl.is-big .vsl-box{--w:min(92vw,calc((100svh - 120px) * 16 / 9),1120px);left:calc((100% - var(--w)) / 2);top:calc((100% - var(--w) * .5625) / 2);border-radius:12px}
+.vsl-box video{width:100%;height:100%;object-fit:cover}
+.vsl-ctl{position:absolute;right:8px;bottom:8px;display:flex;gap:6px}
+.vsl.is-big .vsl-ctl{right:14px;bottom:14px;gap:8px}
+.vsl-btn{display:grid;place-items:center;width:36px;height:36px;border:0;border-radius:50%;background:rgba(11,17,28,.72);color:#fff;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:background-color .2s,transform .2s}
+.vsl.is-big .vsl-btn{width:44px;height:44px}
+.vsl-btn:hover{background:rgba(11,17,28,.92);transform:scale(1.06)}
+.vsl-btn svg{width:18px;height:18px}
+.vsl.is-big .vsl-btn svg{width:20px;height:20px}
+.vsl .i-on,.vsl.is-muted .i-off{display:inline}
+.vsl .i-off,.vsl.is-muted .i-on,.vsl .i-shrink,.vsl.is-big .i-grow{display:none}
+.vsl.is-big .i-shrink{display:inline}
+/* out of the way while the phone menu is open */
+html:has(.nav.open) .vsl{visibility:hidden}
+@media (max-width:560px){.vsl-box{--w:46vw}.vsl-box{left:calc(100% - var(--w) - 14px);top:calc(100% - var(--w) * .5625 - 14px)}.vsl-ctl{right:6px;bottom:6px;gap:5px}.vsl-btn{width:32px;height:32px}.vsl-btn svg{width:16px;height:16px}}
+
 /* tablet */
 @media (max-width:1100px){
   /* the two ways stay side by side down to tablet; each stacks its clip above its text */
@@ -373,7 +393,7 @@ html:has(.lead[open]){overflow:hidden}
   [data-carousel]{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin-inline:calc(var(--pad)*-1);padding:0 var(--pad);scroll-padding-inline:var(--pad);scrollbar-width:none}
   [data-carousel]::-webkit-scrollbar{display:none}
   [data-carousel] > *{flex:0 0 86%;scroll-snap-align:start}
-  .ways-grid[data-carousel]{display:grid;margin-inline:0;padding:0;overflow:visible}
+  .ways-grid[data-carousel]{display:grid;grid-template-columns:1fr;gap:72px;margin-inline:0;padding:0;overflow:visible}
   .way{grid-template-columns:1fr}
   .way-media{width:100%;aspect-ratio:4/5}
   .plans{margin-top:40px}

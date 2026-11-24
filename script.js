@@ -132,6 +132,50 @@ document.addEventListener('click', e => {
 modal?.addEventListener('click', e => { if (e.target === modal || e.target.closest('[data-close]')) modal.close(); });
 modal?.addEventListener('close', () => { opener?.focus({ preventScroll: true }); opener = null; });
 
+// VSL in the corner. Browsers only allow autoplay muted, so it starts silent and the sound comes on at the
+// visitor's first tap or click anywhere (a scroll swipe does not count as one). It loops from the start, silent.
+const vsl = document.getElementById('vsl');
+if (vsl) {
+  const v = vsl.querySelector('video'), box = vsl.querySelector('.vsl-box');
+  const soundBtn = vsl.querySelector('[data-vsl-sound]'), sizeBtn = vsl.querySelector('[data-vsl-size]');
+  let unlocked = false;
+  const sync = () => {
+    vsl.classList.toggle('is-muted', v.muted);
+    soundBtn.setAttribute('aria-pressed', !v.muted);
+    soundBtn.setAttribute('aria-label', v.muted ? 'Activer le son' : 'Couper le son');
+    const big = vsl.classList.contains('is-big');
+    sizeBtn.setAttribute('aria-label', big ? 'Réduire la vidéo' : 'Agrandir la vidéo');
+  };
+  const play = () => v.play().catch(() => { v.muted = true; sync(); v.play().catch(() => {}); });
+  const setSound = on => { v.muted = !on; sync(); play(); };
+  sync(); play();
+  document.addEventListener('click', e => {
+    if (unlocked) return;
+    unlocked = true;
+    if (!e.target.closest('[data-vsl-sound]')) setSound(true);
+  }, true);
+  soundBtn.addEventListener('click', () => setSound(v.muted));
+  // grow or shrink: measure, switch, then animate from the old box to the new one (FLIP)
+  const resize = big => {
+    const a = box.getBoundingClientRect();
+    vsl.classList.toggle('is-big', big); sync();
+    const b = box.getBoundingClientRect();
+    box.style.transition = 'none';
+    box.style.transform = `translate(${a.left - b.left}px, ${a.top - b.top}px) scale(${a.width / b.width})`;
+    box.getBoundingClientRect();
+    box.style.transition = ''; box.style.transform = '';
+  };
+  sizeBtn.addEventListener('click', () => resize(!vsl.classList.contains('is-big')));
+  vsl.querySelector('[data-vsl-min]').addEventListener('click', () => resize(false));
+  addEventListener('keydown', e => { if (e.key === 'Escape' && vsl.classList.contains('is-big') && !modal?.open) resize(false); });
+  v.addEventListener('ended', () => { v.currentTime = 0; v.muted = true; sync(); play(); });
+  // the contact form pauses it; closing the form picks it up again
+  let wasPlaying = false;
+  if (modal) new MutationObserver(() => {
+    if (modal.open) { wasPlaying = !v.paused; v.pause(); } else if (wasPlaying) play();
+  }).observe(modal, { attributes: true, attributeFilter: ['open'] });
+}
+
 // three-step contact form
 const form = document.getElementById('leadForm');
 if (form) {
